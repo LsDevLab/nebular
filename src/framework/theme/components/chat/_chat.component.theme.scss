@@ -73,7 +73,6 @@
   }
 
   nb-chat-message {
-    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: row;
 
@@ -102,9 +101,23 @@
       flex-direction: column;
 
       .sender {
-        font-size: 0.875rem;
+        font-size: 10px;
         color: nb-theme(chat-message-sender-text-color);
-        margin-bottom: 0.5rem;
+        margin: 0px;
+        height: 15px;
+      }
+
+      .status-time-div {
+        width: 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .time {
+        font-size: 10px;
+        color: nb-theme(chat-message-sender-text-color);
+        margin: 0px 0px 2px 0px;
       }
 
       p {
@@ -112,12 +125,14 @@
         white-space: pre-wrap;
         max-width: 100%;
         margin-bottom: 0;
+        width: fit-content;
       }
 
       .text {
-        padding: 1rem;
+        padding: 0.5rem;
         border-radius: 0.5rem;
       }
+
     }
 
     nb-chat-message-file {
@@ -194,14 +209,33 @@
         @include nb-ltr(margin-left, 0.5rem);
         @include nb-rtl(margin-right, 0.5rem);
 
-        @include nb-ltr(margin-right, 3rem);
-        @include nb-rtl(margin-left, 3rem);
+        @include nb-ltr(margin-right, 0rem);
+        @include nb-rtl(margin-left, 0rem);
       }
 
       nb-chat-message-text {
         align-items: flex-start;
 
+        .status-time-div {
+          align-items: flex-start;
+          margin: 0px 0px 0px 7px;
+          order: 1;
+        }
+
+        .message-div {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .date-time-div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+
         .text {
+          margin-bottom: 0;
+          margin-top: 0;
           @include nb-ltr(border-top-left-radius, 0);
           @include nb-rtl(border-top-right-radius, 0);
           background: nb-theme(chat-message-background);
@@ -223,8 +257,8 @@
         @include nb-ltr(margin-right, 0.5rem);
         @include nb-rtl(margin-left, 0.5rem);
 
-        @include nb-ltr(margin-left, 3rem);
-        @include nb-rtl(margin-right, 3rem);
+        @include nb-ltr(margin-left, 0rem);
+        @include nb-rtl(margin-right, 0rem);
       }
 
       nb-chat-message-text {
@@ -234,7 +268,19 @@
           @include nb-rtl(text-align, left);
         }
 
+        .message-div {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .status-time-div {
+          align-items: flex-end;
+          margin: 0px 7px 0px 0px;
+        }
+
         .text {
+          margin-bottom: 0;
+          margin-top: 0;
           @include nb-ltr(border-top-right-radius, 0);
           @include nb-rtl(border-top-left-radius, 0);
           background: nb-theme(chat-message-reply-background-color);
@@ -245,6 +291,14 @@
       nb-chat-message-file {
         align-items: flex-end;
       }
+    }
+
+    &.last-of-a-group {
+      margin-bottom: 1rem;
+    }
+
+    &.not-last-of-a-group {
+      margin-bottom: 0.15rem;
     }
   }
 

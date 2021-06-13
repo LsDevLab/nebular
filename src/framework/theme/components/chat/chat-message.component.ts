@@ -58,11 +58,11 @@ import { NbChatMessageFile } from './chat-message-file.component';
 @Component({
   selector: 'nb-chat-message',
   template: `
-    <div class="avatar" [style.background-image]="avatarStyle" *ngIf="!reply">
+    <!--<div class="avatar" [style.background-image]="avatarStyle" *ngIf="!reply">
       <ng-container *ngIf="!avatarStyle">
         {{ getInitials() }}
       </ng-container>
-    </div>
+    </div>-->
     <div class="message">
       <ng-container [ngSwitch]="type">
 
@@ -130,6 +130,25 @@ export class NbChatMessageComponent {
   }
   protected _reply: boolean = false;
   static ngAcceptInputType_reply: NbBooleanInput;
+
+  @HostBinding('class.not-last-of-a-group')
+  get notLastOfAGroup() {
+    return !this.lastOfAGroup;
+  }
+
+  /**
+   * Determines if a message is a the last of a group
+   */
+  @Input()
+  @HostBinding('class.last-of-a-group')
+  get lastOfAGroup(): boolean {
+    return this._lastOfAGroup;
+  }
+  set lastOfAGroup(value: boolean) {
+    this._lastOfAGroup = convertToBoolProperty(value);
+  }
+  protected _lastOfAGroup: boolean = false;
+  static ngAcceptInputType_lastOfAGroup: NbBooleanInput;
 
   /**
    * Message sender
