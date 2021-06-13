@@ -54,14 +54,22 @@ import { NbComponentOrCustomStatus } from '../component-status';
         <div *ngIf="file.urlStyle" [style.background-image]="file.urlStyle">
           <span class="remove" (click)="removeFile(file)">&times;</span>
         </div>
-
-        <div>
-          <nb-icon *ngIf="!file.urlStyle" icon="file-text-outline" pack="nebular-essentials"></nb-icon>
+        <div *ngIf="!file.urlStyle">
+          <nb-icon icon="file-text-outline" pack="nebular-essentials"></nb-icon>
           <span class="remove" (click)="removeFile(file)">&times;</span>
         </div>
       </ng-container>
     </div>
     <div class="message-row">
+      <button nbButton
+              status="basic"
+              [class.with-icon]="!buttonTitle"
+              (click)="fileInput.click()"
+              class="attach-file-button">
+        <nb-icon *ngIf="!buttonTitle; else title" icon="attach-outline" ></nb-icon>
+        <ng-template #title>{{ buttonTitle }}</ng-template>
+      </button>
+      <input #fileInput type="file" (change)="onAttachFileFromButton($event)" hidden multiple />
       <input nbInput
              fullWidth
              [status]="getInputStatus()"
@@ -174,7 +182,32 @@ export class NbChatFormComponent {
         }
       }
     }
+    // tslint:disable-next-line:no-console
+    console.log(this.droppedFiles);
   }
+
+  onAttachFileFromButton(event: any) {
+    if (this.dropFiles) {
+      this.fileOver = false;
+
+      for (const file of event.target.files) {
+        const res = file;
+
+        if (this.imgDropTypes.includes(file.type)) {
+          const fr = new FileReader();
+          fr.onload = (e: any) => {
+            res.src = e.target.result;
+            res.urlStyle = this.domSanitizer.bypassSecurityTrustStyle(`url(${res.src})`);
+            this.cd.detectChanges();
+          };
+
+          fr.readAsDataURL(file);
+        }
+        this.droppedFiles.push(res);
+      }
+    }
+  }
+
 
   removeFile(file) {
     const index = this.droppedFiles.indexOf(file);
