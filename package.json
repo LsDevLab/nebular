@@ -1,19 +1,19 @@
 {
-  "name": "nebular",
-  "version": "7.0.0",
+  "name": "lsdevalb-nebular",
+  "version": "7.0.1",
   "license": "MIT",
-  "author": "akveo <contact@akveo.com>",
-  "private": true,
+  "author": "akveo-lsdevlab <ls.devlab@gmail.com>",
+  "private": false,
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "IE 11"
   ],
   "bugs": {
-    "url": "https://github.com/akveo/nebular/issues"
+    "url": "https://github.com/LsDevLab/nebular/issues"
   },
-  "homepage": "https://github.com/akveo/nebular#readme",
-  "repository": "git+https://github.com/akveo/nebular.git",
+  "homepage": "https://github.com/LsDevLab/nebular.git#readme",
+  "repository": "git+https://github.com/LsDevLab/nebular.git",
   "scripts": {
     "ng": "ng",
     "ngcc-compile": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",

@@ -45,12 +45,13 @@ export class ChatShowcaseComponent {
       type: files.length ? 'file' : 'text',
       files: files,
       user: {
-        name: 'Jonh Doe',
-        avatar: 'https://i.gifer.com/no.gif',
+        name: '✔',
       },
+      lastOfAGroup: true,
     });
     const botReply = this.chatShowcaseService.reply(event.message);
     if (botReply) {
+      botReply.lastOfAGroup = true;
       setTimeout(() => { this.messages.push(botReply) }, 500);
     }
   }

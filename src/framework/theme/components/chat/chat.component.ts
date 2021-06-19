@@ -167,7 +167,6 @@ import { NbChatMessageComponent } from './chat-message.component';
   selector: 'nb-chat',
   styleUrls: ['./chat.component.scss'],
   template: `
-    <div class="header">{{ title }}</div>
     <div class="scrollable" #scrollable>
       <div class="messages">
         <ng-content select="nb-chat-message"></ng-content>
