@@ -66,6 +66,12 @@ import { NbChatMessageFile } from './chat-message-file.component';
     <div class="message">
       <ng-container [ngSwitch]="type">
 
+        <div class="date-div" *ngIf="firstOfTheDay">
+          <p class="date-popup">
+            {{date | date: 'longDate'}}
+          </p>
+        </div>
+
         <nb-chat-message-file *ngSwitchCase="'file'"
                               [sender]="sender" [date]="date" [dateFormat]="dateFormat"
                               [message]="message" [files]="files">
@@ -149,6 +155,11 @@ export class NbChatMessageComponent {
   }
   protected _lastOfAGroup: boolean = false;
   static ngAcceptInputType_lastOfAGroup: NbBooleanInput;
+
+  /**
+   * Determines if a message is a the first of the day
+   */
+  @Input() firstOfTheDay: boolean;
 
   /**
    * Message sender

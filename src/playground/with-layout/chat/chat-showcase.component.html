@@ -11,6 +11,7 @@
                     [longitude]="msg.longitude"
                     dateFormat="short"
                     [lastOfAGroup]="msg.lastOfAGroup"
+                    [firstOfTheDay]="msg.firstOfTheDay"
   >
   </nb-chat-message>
   <nb-chat-form (send)="sendMessage($event)" [dropFiles]="true">

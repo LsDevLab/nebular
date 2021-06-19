@@ -95,6 +95,23 @@
       color: white;
     }
 
+    .date-div {
+      text-align: center;
+      margin: 0.6rem 0rem 1rem 0rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .date-popup{
+      width: fit-content;
+      margin: 0rem;
+      border-radius: 0.5rem;
+      background: rgba(220, 220, 220, 0.16);
+      padding: 0.4rem 1rem 0.4rem 1rem;
+      color: nb-theme(chat-message-sender-text-color);
+      font-size: 0.7rem;
+    }
+
     nb-chat-message-text {
       display: flex;
       flex-direction: column;

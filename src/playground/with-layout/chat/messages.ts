@@ -8,6 +8,7 @@ export const messages = [
       avatar: 'https://i.gifer.com/no.gif',
     },
     lastOfAGroup: true,
+    firstOfTheDay: true,
   },
   {
     text: 'Hello, how are you? This should be a very long message so that we can test how it fit into the screen.',
@@ -46,6 +47,7 @@ export const messages = [
       avatar: '',
     },
     lastOfAGroup: false,
+    firstOfTheDay: true,
   },
   {
     text: 'What do you mean by that? What do you mean by that? What do you mean by that? What do you mean by that? What do you mean by that?',
